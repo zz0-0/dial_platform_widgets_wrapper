@@ -1,7 +1,6 @@
 import 'package:dial_platform_widgets_wrapper/src/platform_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart' as windows;
 import 'package:flutter/cupertino.dart' as ios;
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' as android;
 import 'package:flutter/widgets.dart';
 import 'package:libadwaita/libadwaita.dart' as gnome;
@@ -182,25 +181,40 @@ class PlatformText extends PlatformWidget {
   }
 
   @override
-  windows.Widget createIOSWidget(windows.BuildContext context) {
-    // TODO: implement createIOSWidget
-    throw UnimplementedError();
+  ios.Text createIOSWidget(windows.BuildContext context) {
+    return ios.Text(
+      data!,
+      key: key,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      overflow: overflow,
+      textScaler: textScaler,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      textWidthBasis: textWidthBasis,
+      textHeightBehavior: textHeightBehavior,
+      selectionColor: selectionColor,
+    );
   }
 
   @override
-  windows.Widget createLinuxWidget(windows.BuildContext context) {
+  Widget createLinuxWidget(windows.BuildContext context) {
     // TODO: implement createLinuxWidget
     throw UnimplementedError();
   }
 
   @override
-  windows.Widget createMacOSWidget(windows.BuildContext context) {
+  Widget createMacOSWidget(windows.BuildContext context) {
     // TODO: implement createMacOSWidget
     throw UnimplementedError();
   }
 
   @override
-  windows.Widget createWindowsWidget(windows.BuildContext context) {
+  windows.Text createWindowsWidget(windows.BuildContext context) {
     return windows.Text(
       data!,
       key: key,
