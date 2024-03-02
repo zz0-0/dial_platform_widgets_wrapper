@@ -1,7 +1,5 @@
 # Dial_platform_widgets_wrapper
 
-**No code is written yet, this is a code repository set up for later development.**
-
 This is a mulitple platform widgets wrapper package written in Flutter/Dart.
 
 ## Tech Stack

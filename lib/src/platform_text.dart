@@ -161,8 +161,47 @@ class PlatformText extends PlatformWidget {
   final Color? selectionColor;
 
   @override
-  android.Text? createAndroidWidget(BuildContext context) {
+  android.Text createAndroidWidget(BuildContext context) {
     return android.Text(
+      data!,
+      key: key,
+      style: style,
+      strutStyle: strutStyle,
+      textAlign: textAlign,
+      textDirection: textDirection,
+      locale: locale,
+      softWrap: softWrap,
+      overflow: overflow,
+      textScaler: textScaler,
+      maxLines: maxLines,
+      semanticsLabel: semanticsLabel,
+      textWidthBasis: textWidthBasis,
+      textHeightBehavior: textHeightBehavior,
+      selectionColor: selectionColor,
+    );
+  }
+
+  @override
+  windows.Widget createIOSWidget(windows.BuildContext context) {
+    // TODO: implement createIOSWidget
+    throw UnimplementedError();
+  }
+
+  @override
+  windows.Widget createLinuxWidget(windows.BuildContext context) {
+    // TODO: implement createLinuxWidget
+    throw UnimplementedError();
+  }
+
+  @override
+  windows.Widget createMacOSWidget(windows.BuildContext context) {
+    // TODO: implement createMacOSWidget
+    throw UnimplementedError();
+  }
+
+  @override
+  windows.Widget createWindowsWidget(windows.BuildContext context) {
+    return windows.Text(
       data!,
       key: key,
       style: style,

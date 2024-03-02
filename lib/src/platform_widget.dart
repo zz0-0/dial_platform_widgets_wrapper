@@ -1,5 +1,4 @@
-import 'dart:io';
-
+import 'package:dial_platform_widgets_wrapper/src/platform/platform.dart';
 import 'package:fluent_ui/fluent_ui.dart' as windows;
 import 'package:flutter/cupertino.dart' as ios;
 import 'package:flutter/foundation.dart';
@@ -8,41 +7,34 @@ import 'package:flutter/widgets.dart';
 import 'package:libadwaita/libadwaita.dart' as gnome;
 import 'package:macos_ui/macos_ui.dart' as macos;
 
-class PlatformWidget extends StatelessWidget {
+abstract class PlatformWidget extends StatelessWidget {
   const PlatformWidget({super.key});
 
-  android.Widget? createAndroidWidget(BuildContext context) {
-    return null;
-  }
+  android.Widget createAndroidWidget(BuildContext context);
 
-  ios.Widget? createIOSWidget(BuildContext context) {
-    return null;
-  }
+  ios.Widget createIOSWidget(BuildContext context);
 
-  Widget? createLinuxWidget(BuildContext context) {
-    return null;
-  }
+  Widget createLinuxWidget(BuildContext context);
 
-  Widget? createMacOSWidget(BuildContext context) {
-    return null;
-  }
+  Widget createMacOSWidget(BuildContext context);
 
-  windows.Widget? createWindowsWidget(BuildContext context) {
-    return null;
-  }
+  windows.Widget createWindowsWidget(BuildContext context);
 
   @override
   Widget build(BuildContext context) {
-    if (Platform.isAndroid || Platform.isFuchsia) {
-      return createAndroidWidget(context)!;
-    } else if (Platform.isIOS) {
-      return createIOSWidget(context)!;
-    } else if (Platform.isLinux) {
-      return createLinuxWidget(context)!;
-    } else if (Platform.isMacOS) {
-      return createMacOSWidget(context)!;
-    } else if (Platform.isWindows) {
-      return createWindowsWidget(context)!;
+    final platform = getPlatform();
+    if (platform == Platform.android || platform == Platform.fuchsia) {
+      return createAndroidWidget(context);
+    } else if (platform == Platform.ios) {
+      return createIOSWidget(context);
+    } else if (platform == Platform.linux) {
+      return createLinuxWidget(context);
+    } else if (platform == Platform.macos) {
+      return createMacOSWidget(context);
+    } else if (platform == Platform.windows) {
+      return createWindowsWidget(context);
+    } else if (platform == Platform.web) {
+      return createAndroidWidget(context);
     }
     return throw UnsupportedError(
       'This platform is not supported: $defaultTargetPlatform',

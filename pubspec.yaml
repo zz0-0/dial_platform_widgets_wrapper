@@ -1,6 +1,6 @@
 name: dial_platform_widgets_wrapper
 description: "A mulitple platform widgets wrapper package written in Flutter/Dart"
-version: 0.0.2
+version: 0.1.0
 homepage:
 
 environment:
